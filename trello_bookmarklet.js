@@ -3,7 +3,6 @@
 
   /* This is run after we've connected to Trello and selected a list */
   var run = function(Trello, idList) {
-    alert("maiden voyage");
     
     var name;
     // Default description is the URL of the page we're looking at
@@ -14,11 +13,10 @@
       // We're looking at a FogBugz case
       name = goBug.ixBug + ": " + goBug.sTitle
 
-    } else if(window.RPM) {
-      // We're on New Relic Error Page
-      alert("RPM detected!")
-      name = $('.attribute_list').html().replace(/(<([^>]+)>)/ig,"");
-      alert(name);
+    } else if(window.RPM && window.location.href.indexOf('traced_errors') != -1) {
+      
+      // We're looking at a New Relic error page
+      name = $('.attribute_list').html().replace(/(<([^>]+)>)/ig," ");
       
     } else if ($("#issue_header_summary").length){
 
