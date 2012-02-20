@@ -3,6 +3,8 @@
 
   /* This is run after we've connected to Trello and selected a list */
   var run = function(Trello, idList) {
+    alert("maiden voyage");
+    
     var name;
     // Default description is the URL of the page we're looking at
     var desc = location.href;
@@ -12,6 +14,12 @@
       // We're looking at a FogBugz case
       name = goBug.ixBug + ": " + goBug.sTitle
 
+    } else if(window.RPM) {
+      // We're on New Relic Error Page
+      alert("RPM detected!")
+      name = $('.attribute_list').html().replace(/(<([^>]+)>)/ig,"");
+      alert(name);
+      
     } else if ($("#issue_header_summary").length){
 
       // We're looking at a JIRA case
