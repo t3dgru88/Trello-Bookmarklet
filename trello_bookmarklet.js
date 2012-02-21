@@ -17,6 +17,8 @@
       
       // We're looking at a New Relic error page
       name = $('.attribute_list').html().replace(/(<([^>]+)>)/ig," ");
+      error_message = $('.error_message').html().replace(/(<([^>]+)>)/ig," ");
+      desc = error_message + "\n\r" + desc;
       
     } else if ($("#issue_header_summary").length){
 
